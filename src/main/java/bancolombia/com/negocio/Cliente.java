@@ -67,4 +67,9 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
     public ArrayList<Cuenta> obtenerCuentas() {
         return this.cuentas;
     }
+
+    @Override
+    public int compareTo(Cliente o) {
+        return this.nombre.compareTo(o.getNombre());
+    }
 }

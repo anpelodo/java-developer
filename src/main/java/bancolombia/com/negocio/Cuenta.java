@@ -3,7 +3,7 @@ package bancolombia.com.negocio;
 import lombok.Data;
 
 @Data
-public abstract class Cuenta {
+public abstract class Cuenta implements Comparable<Cuenta> {
     protected int numero;
     protected String fechaApertura;
     protected double saldo;
@@ -26,6 +26,11 @@ public abstract class Cuenta {
         this.numero = numero;
         this.fechaApertura = fechaApertura;
         this.saldo = 0.0;
+    }
+
+    @Override
+    public int compareTo(Cuenta cuenta){
+        return this.fechaApertura.compareToIgnoreCase(cuenta.getFechaApertura());
     }
 
 }

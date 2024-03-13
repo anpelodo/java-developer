@@ -30,7 +30,8 @@ public abstract class Cuenta implements Comparable<Cuenta> {
 
     @Override
     public int compareTo(Cuenta o){
-        return ((Double) (this.saldo - o.getSaldo())).intValue();
+        var result = this.saldo - o.getSaldo();
+        return (int) Math.round(result * 100);
     }
 
 }

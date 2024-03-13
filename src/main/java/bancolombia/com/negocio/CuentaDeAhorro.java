@@ -3,17 +3,17 @@ package bancolombia.com.negocio;
 public class CuentaDeAhorro extends Cuenta {
     private double tasaInteresMensual;
 
-    CuentaDeAhorro(int numero, String fechaApertura, double saldo, String fechaCancelacion, double tasaInteresMensual) {
+    public CuentaDeAhorro(int numero, String fechaApertura, double saldo, String fechaCancelacion, double tasaInteresMensual) {
         super(numero, fechaApertura, saldo, fechaCancelacion);
         this.tasaInteresMensual = tasaInteresMensual;
     }
 
-    CuentaDeAhorro(int numero, String fechaApertura, double saldo, double tasaInteresMensual) {
+    public CuentaDeAhorro(int numero, String fechaApertura, double saldo, double tasaInteresMensual) {
         super(numero, fechaApertura, saldo);
         this.tasaInteresMensual = tasaInteresMensual;
     }
 
-    CuentaDeAhorro(int numero, String fechaApertura, double tasaInteresMensual) {
+    public CuentaDeAhorro(int numero, String fechaApertura, double tasaInteresMensual) {
         super(numero, fechaApertura);
         this.tasaInteresMensual = tasaInteresMensual;
     }

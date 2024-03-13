@@ -29,8 +29,8 @@ public abstract class Cuenta implements Comparable<Cuenta> {
     }
 
     @Override
-    public int compareTo(Cuenta cuenta){
-        return this.fechaApertura.compareToIgnoreCase(cuenta.getFechaApertura());
+    public int compareTo(Cuenta o){
+        return ((Double) (this.saldo - o.getSaldo())).intValue();
     }
 
 }

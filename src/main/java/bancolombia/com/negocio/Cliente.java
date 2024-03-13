@@ -70,6 +70,6 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
 
     @Override
     public int compareTo(Cliente o) {
-        return this.nombre.compareTo(o.getNombre());
+        return this.numero - o.numero;
     }
 }

@@ -1,11 +1,14 @@
 package bancolombia.com.negocio;
 
-import java.util.ArrayList;
+import com.sun.source.tree.Tree;
+
+import java.util.TreeSet;
+
 public interface ServicioClientes {
     boolean agregarCliente(Cliente cliente);
     boolean eliminarCliente(int numero);
     Cliente consultarCliente(int numero);
-    ArrayList<Cliente> obtenerClientes();
+    TreeSet<Cliente> obtenerClientes();
     Cliente buscarClientePorRfc(String rfc);
     void listarClientes();
 

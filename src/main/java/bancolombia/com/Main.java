@@ -2,6 +2,7 @@ package bancolombia.com;
 
 import bancolombia.com.negocio.Banco;
 import bancolombia.com.negocio.Cliente;
+import bancolombia.com.negocio.CuentaDeAhorro;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,5 +25,10 @@ public class Main {
         bancolombia.eliminarCliente(1500);
         bancolombia.buscarClientePorRfc("RESV900808");
         bancolombia.buscarClientePorRfc("AAAA451011");
+
+        var cuenta1 = new CuentaDeAhorro(1001, "2021-01-01", 0.0, 0.05);
+        var cuenta2 = new CuentaDeAhorro(1002, "2022-03-15", 100.0, 0.08);
+        cliente1.agregarCuenta(cuenta1);
+        cliente1.agregarCuenta(cuenta2);
     }
 }

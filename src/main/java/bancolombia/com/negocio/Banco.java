@@ -1,6 +1,7 @@
 package bancolombia.com.negocio;
 
 import lombok.Data;
+
 import java.util.TreeSet;
 
 @Data
@@ -46,14 +47,16 @@ public class Banco implements ServicioClientes {
 
     @Override
     public Cliente consultarCliente(int numero) {
-        for (Cliente cliente : clientes) {
-            if (cliente.getNumero() == numero) {
-                System.out.println("Se encontro el cliente numero: " + numero);
-                return cliente;
-            }
+        var result = this.clientes.stream()
+                .filter(cliente -> cliente.getNumero() == numero)
+                .findFirst();
+
+        if (result.isEmpty()) {
+            System.out.println("No se encontro el cliente numero: " + numero);
+            return null;
         }
-        System.out.println("No se encontro el cliente numero: " + numero);
-        return null;
+
+        return result.get();
     }
 
     @Override
@@ -63,22 +66,24 @@ public class Banco implements ServicioClientes {
 
     @Override
     public Cliente buscarClientePorRfc(String rfc) {
-        for (Cliente cliente : clientes) {
-            if (cliente.getRfc().equals(rfc)) {
-                System.out.println("Se encontro el cliente con rfc: " + rfc);
-                return cliente;
-            }
+        var result = clientes.stream()
+                .filter(cliente -> cliente.getRfc() == rfc)
+                .findFirst();
+
+        if(result.isEmpty()){
+            System.out.println("No se encontro el cliente con rfc: " + rfc);
+            return null;
         }
-        System.out.println("No se encontro el cliente con rfc: " + rfc);
-        return null;
+
+        return result.get();
     }
 
     @Override
     public void listarClientes() {
         System.out.println("=".repeat(232));
-        for (Cliente c : clientes) {
-            System.out.println(c);
-        }
+
+        clientes.forEach(System.out::println);
+
         System.out.println("=".repeat(232));
     }
 }

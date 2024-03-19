@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 @Data
-public class Cliente implements ServicioCuentas, Comparable<Cliente>{
+public class Cliente implements ServicioCuentas, Comparable<Cliente> {
 
     private int numero;
     private String nombre;
@@ -16,7 +16,7 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
     private ArrayList<Cuenta> cuentas;
     private String fechaNacimiento;
 
-    public Cliente(int numero, String nombre, Domicilio domicilio , String rfc, String telefono, String fechaNacimiento) {
+    public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono, String fechaNacimiento, ServicioCuentas servicioCuentas) {
         this.numero = numero;
         this.nombre = nombre;
         this.domicilio = domicilio;
@@ -29,7 +29,7 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
     public Cliente(int numero, String nombre, String calle, int numeroDomicilio, String colonia, String estado, int codigoPostal, String rfc, String telefono, String fechaNacimiento) {
         this.numero = numero;
         this.nombre = nombre;
-        this.domicilio =  new Domicilio(calle, numeroDomicilio, colonia, estado, codigoPostal);
+        this.domicilio = new Domicilio(calle, numeroDomicilio, colonia, estado, codigoPostal);
         this.rfc = rfc;
         this.telefono = telefono;
         this.fechaNacimiento = fechaNacimiento;
@@ -43,9 +43,11 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
 
     @Override
     public boolean cancelarCuenta(int numero) {
-        var cuenta = this.cuentas.stream().filter(cuentast -> cuentast.getNumero() == numero).findFirst();
+        var cuenta = this.cuentas.stream()
+                .filter(cuentast -> cuentast.getNumero() == numero)
+                .findFirst();
 
-        if(cuenta.isPresent()){
+        if (cuenta.isPresent()) {
             cuenta.get().setFechaCancelacion((new Date()).toString());
             return true;
         } else {
@@ -55,12 +57,16 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente>{
 
     @Override
     public void abonarCuenta(int numero, double abono) {
-        this.cuentas.stream().filter(cuenta -> cuenta.getNumero() == numero).forEach(cuenta -> cuenta.setSaldo(cuenta.getSaldo() + abono));
+        this.cuentas.stream()
+                .filter(cuenta -> cuenta.getNumero() == numero)
+                .forEach(cuenta -> cuenta.setSaldo(cuenta.getSaldo() + abono));
     }
 
     @Override
     public void retirar(int numero, double retiro) {
-        this.cuentas.stream().filter(cuenta -> cuenta.getNumero() == numero).forEach(cuenta -> cuenta.setSaldo(cuenta.getSaldo() - retiro));
+        this.cuentas.stream()
+                .filter(cuenta -> cuenta.getNumero() == numero)
+                .forEach(cuenta -> cuenta.setSaldo(cuenta.getSaldo() - retiro));
     }
 
     @Override

@@ -16,7 +16,7 @@ public class Cliente implements ServicioCuentas, Comparable<Cliente> {
     private ArrayList<Cuenta> cuentas;
     private String fechaNacimiento;
 
-    public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono, String fechaNacimiento, ServicioCuentas servicioCuentas) {
+    public Cliente(int numero, String nombre, Domicilio domicilio, String rfc, String telefono, String fechaNacimiento) {
         this.numero = numero;
         this.nombre = nombre;
         this.domicilio = domicilio;

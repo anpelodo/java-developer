@@ -17,5 +17,4 @@ public class Domicilio {
         this.estado = estado;
         this.codigoPostal = codigoPostal;
     }
-
 }
